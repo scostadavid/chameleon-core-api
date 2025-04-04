@@ -1,0 +1,6 @@
+@chameleon_core_api_HostAddress = http://localhost:5248
+
+GET {{chameleon_core_api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
