@@ -40,6 +40,9 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.Services.AddRazorPages();
+builder.Services.AddServerSideBlazor();
+
 builder.Services.AddControllers();
 
 // Injeção de dependências
@@ -69,6 +72,12 @@ using (var scope = app.Services.CreateScope())
 app.UseCors("AllowAll");
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseStaticFiles(); // Necessário pro Blazor
+app.UseRouting();
+
+app.MapBlazorHub();
+app.MapFallbackToPage("/_Host");
 
 app.UseSwagger(c =>
 {
