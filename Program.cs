@@ -44,7 +44,13 @@ builder.Services.AddControllers();
 
 // Injeção de dependências
 builder.Services.AddScoped<IShortUrlRepository, ShortUrlRepository>();
-builder.Services.AddScoped<ShortUrlService>();
+builder.Services.AddScoped<IShortUrlService, ShortUrlService>();
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new() { Title = "ChameleonCoreAPI", Version = "v1" });
+});
 
 var app = builder.Build();
 
@@ -63,5 +69,18 @@ using (var scope = app.Services.CreateScope())
 app.UseCors("AllowAll");
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseSwagger(c =>
+{
+    c.RouteTemplate = "docs/swagger/{documentName}/swagger.json";
+});
+
+app.UseReDoc(options =>
+{
+    options.RoutePrefix = "docs/redoc"; 
+    options.DocumentTitle = "ChameleonCoreAPI Docs";
+    options.SpecUrl = "/docs/swagger/v1/swagger.json"; 
+});
+
 app.MapControllers();
 app.Run();
