@@ -2,7 +2,7 @@ using ChameleonCoreAPI.Domain;
 
 namespace ChameleonCoreAPI.Application
 {
-    public class ShortUrlService
+    public class ShortUrlService : IShortUrlService
     {
         private readonly IShortUrlRepository _repository;
 
@@ -11,7 +11,7 @@ namespace ChameleonCoreAPI.Application
             _repository = repository;
         }
 
-        public async Task<string> CreateShortUrlAsync(string originalUrl)
+        public async Task<string> CreateShortUrl(string originalUrl)
         {
             var shortCode = Guid.NewGuid().ToString()[..6]; 
             var shortUrl = new ShortUrl { OriginalUrl = originalUrl, ShortCode = shortCode };
@@ -19,7 +19,7 @@ namespace ChameleonCoreAPI.Application
             return shortCode;
         }
 
-        public async Task<string?> GetOriginalUrlAsync(string shortCode)
+        public async Task<string?> GetOriginalUrl(string shortCode)
         {
             var shortUrl = await _repository.GetByShortCode(shortCode);
             if (shortUrl != null)

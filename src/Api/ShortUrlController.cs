@@ -1,16 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
 using ChameleonCoreAPI.Application;
-using ChameleonCoreAPI.Domain;
-using System.Threading.Tasks;
 
 namespace ChameleonCoreAPI.API
 {
     [ApiController]
     public class ShortUrlController : ControllerBase
     {
-        private readonly ShortUrlService _shortUrlService;
+        private readonly IShortUrlService _shortUrlService;
 
-        public ShortUrlController(ShortUrlService shortUrlService)
+        public ShortUrlController(IShortUrlService shortUrlService)
         {
             _shortUrlService = shortUrlService;
         }
@@ -23,7 +21,7 @@ namespace ChameleonCoreAPI.API
                 return BadRequest("Invalid URL.");
             }
 
-            var shortCode = await _shortUrlService.CreateShortUrlAsync(request.OriginalUrl);
+            var shortCode = await _shortUrlService.CreateShortUrl(request.OriginalUrl);
             var shortUrl = $"{Request.Scheme}://{Request.Host}/api/shorturl/{shortCode}";
 
             return Ok(new { ShortUrl = shortUrl });
@@ -32,7 +30,7 @@ namespace ChameleonCoreAPI.API
         [HttpGet("{shortCode}")]
         public async Task<IActionResult> GetOriginalUrl(string shortCode)
         {
-            var originalUrl = await _shortUrlService.GetOriginalUrlAsync(shortCode);
+            var originalUrl = await _shortUrlService.GetOriginalUrl(shortCode);
 
             if (originalUrl == null)
             {
