@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using ChameleonCoreAPI.Application;
 using System.ComponentModel.DataAnnotations;
 
-namespace ChameleonCoreAPI.Presentation
+namespace ChameleonCoreAPI.API
 {
     [ApiController]
     [Produces("application/json")]

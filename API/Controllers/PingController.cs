@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace ChameleonCoreAPI.Presentation
+namespace ChameleonCoreAPI.API
 {
     [ApiExplorerSettings(IgnoreApi = true)]
     [ApiController]

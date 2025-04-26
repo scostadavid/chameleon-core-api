@@ -4,11 +4,11 @@ A lightweight, scalable URL shortening API built with C# and .NET. Designed to s
 
 ## 🔧 Tech Stack
 
-- **Language:** C# (.NET 8)
+- **Language:** C# (.NET 9)
 - **Architecture:** Clean Architecture
 - **Database:** PostgreSQL (via EF Core)
-- **Testing:** xUnit
-- **Tooling:** Docker, GitHub Actions (WIP), Swagger
+- **Testing:** xUnit, Moq
+- **Tooling:** Docker, GitHub Actions (WIP), Swagger, Redoc
 
 ## ✨ Features
 
@@ -52,13 +52,13 @@ dotnet run
 
 Test endpoint at:
 ```
-http://localhost:5248/api/ping
+http://localhost:5070/api/ping
 ```
 
 Swagger is available at:
 
 ```
-http://localhost:5248/docs/redoc
+http://localhost:5070/docs/redoc
 ```
 
 ## 🧪 Tests
@@ -82,11 +82,11 @@ dotnet test
 ## 📂 Project Structure (WIP)
 
 ```     
+├── Chameleon.API  # Entry point (WebAPI and UI)
 ├── Chameleon.Application   # Use cases / Application logic
 ├── Chameleon.Domain        # Entities and core domain logic
 ├── Chameleon.Infrastructure # Data access, external services
-├── Chameleon.Tests         # Unit tests
-├── Chameleon.Presentation  # Entry point (WebAPI and UI)
+├── Chameleon.Tests         # Test suite
 ```
 
 ## 🧑‍💻 Author

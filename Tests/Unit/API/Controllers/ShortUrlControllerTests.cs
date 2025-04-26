@@ -1,8 +1,10 @@
 using Xunit;
 using Moq;
 using ChameleonCoreAPI.Application;
-using ChameleonCoreAPI.Presentation;
+using ChameleonCoreAPI.API;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+
 
 public class ShortUrlControllerTests
 {
