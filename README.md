@@ -74,7 +74,7 @@ dotnet test
 - [x] Basic redirect and URL generation
 - [x] Unit tests
 - [ ] Full Docker support
-- [ ] CI/CD pipeline (GitHub Actions)
+- [x] CI/CD pipeline (GitHub Actions)
 - [ ] Authentication (JWT)
 - [ ] URL Analytics (click count per short URL)
 - [ ] Public deployment
