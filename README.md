@@ -21,7 +21,7 @@ A lightweight, scalable URL shortening API built with C# and .NET. Designed to s
 
 ### Prerequisites
 
-- [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download)
+- [.NET 9 SDK](https://dotnet.microsoft.com/en-us/download)
 - [Docker](https://www.docker.com/) (optional)
 - PostgreSQL instance (local or docker container)
 
@@ -45,7 +45,7 @@ docker compose up
 
 ```bash
 dotnet build
-dotnet run
+dotnet run --project API/Chameleon.API.csproj
 ```
 
 ## 📦 API Documentation
